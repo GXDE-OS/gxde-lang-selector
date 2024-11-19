@@ -1,4 +1,4 @@
-Source: deepin-lang-selector
+Source: gxde-lang-selector
 Section: utils
 Priority: extra
 Maintainer: Deepin Packages Builder <packages@deepin.com>
@@ -14,7 +14,7 @@ Build-Depends:
 Standards-Version: 3.9.6
 Homepage: http://www.deepin.org
 
-Package: deepin-lang-selector
+Package: gxde-lang-selector
 Architecture: any
 Depends:
     ${shlibs:Depends},

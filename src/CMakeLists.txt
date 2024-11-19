@@ -31,8 +31,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(INSTALLER_SHARE_DIR ${CMAKE_INSTALL_PREFIX}/share/deepin-lang-selector)
-set(INSTALLER_LIBEXEC_DIR ${CMAKE_INSTALL_PREFIX}/lib/deepin-lang-selector)
+set(INSTALLER_SHARE_DIR ${CMAKE_INSTALL_PREFIX}/share/gxde-lang-selector)
+set(INSTALLER_LIBEXEC_DIR ${CMAKE_INSTALL_PREFIX}/lib/gxde-lang-selector)
 
 # Defines path to resource directories
 if (CMAKE_BUILD_TYPE MATCHES Debug)
@@ -105,9 +105,9 @@ set_source_files_properties(${INSTALLER_TRANSLATION_TS}
 qt5_add_translation(INSTALLER_TRANSLATION_QM ${INSTALLER_TRANSLATION_TS})
 add_custom_target(installer-qm-update DEPENDS ${INSTALLER_TRANSLATION_QM})
 
-add_executable(deepin-lang-selector ${SRC_FILES})
-target_link_libraries(deepin-lang-selector ${Qt_LIBS})
-add_dependencies(deepin-lang-selector installer-qm-update)
+add_executable(gxde-lang-selector ${SRC_FILES})
+target_link_libraries(gxde-lang-selector ${Qt_LIBS})
+add_dependencies(gxde-lang-selector installer-qm-update)
 
-install(TARGETS deepin-lang-selector
+install(TARGETS gxde-lang-selector
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

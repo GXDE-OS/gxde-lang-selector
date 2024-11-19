@@ -29,14 +29,14 @@ Init ()
 Config ()
 {
 	# Checking if package is already configured differently
-	if [ -e /usr/share/lightdm/lightdm.conf.d/99-deepin-lang-selector.conf ]
+	if [ -e /usr/share/lightdm/lightdm.conf.d/99-gxde-lang-selector.conf ]
 	then
 		exit 0
 	fi
 
-cat > /usr/share/lightdm/lightdm.conf.d/99-deepin-lang-selector.conf << EOF
+cat > /usr/share/lightdm/lightdm.conf.d/99-gxde-lang-selector.conf << EOF
 [Seat:*]
-display-setup-script=/usr/bin/deepin-lang-selector
+display-setup-script=/usr/bin/gxde-lang-selector
 EOF
 }
 
