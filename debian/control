@@ -8,9 +8,11 @@ Build-Depends:
     g++,
     pkg-config,
     qt5-qmake,
-    qt5-default,
     qtbase5-dev,
     qttools5-dev-tools,
+    libqt5x11extras5-dev,
+    qtchooser,
+    qttools5-dev,
 Standards-Version: 3.9.6
 Homepage: http://www.deepin.org
 
