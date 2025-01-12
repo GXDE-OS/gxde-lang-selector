@@ -1,3 +1,9 @@
+gxde-lang-selector (1.1.0) UNRELEASED; urgency=medium
+
+  * 修复上方选择其它语言，下方按钮依旧显示 Next 的问题
+
+ -- gfdgd_xi <3025613752@qq.com>  Sun, 12 Jan 2025 22:37:01 +0800
+
 gxde-lang-selector (1.0.1) unstable; urgency=medium
 
   * Initial release 

@@ -145,6 +145,7 @@ void SelectLanguageFrame::onLanguageListSelected(const QModelIndex& current,
     // Update locale on-the-fly.
     const LanguageItem language_item = language_model_->languageItemAt(current);
     this->updateTranslator(language_item.locale);
+    next_button_->setText(tr("Next"));
     lang_ = language_item;
     this->writeConf();
     emit this->timezoneUpdated(language_item.timezone);
