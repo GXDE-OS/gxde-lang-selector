@@ -1,8 +1,9 @@
-gxde-lang-selector (1.1.0) UNRELEASED; urgency=medium
+gxde-lang-selector (1.1.1) UNRELEASED; urgency=medium
 
   * 修复上方选择其它语言，下方按钮依旧显示 Next 的问题
+  * 修复 1050-gxde-lang-selector 配置脚本语法错误的问题
 
- -- gfdgd_xi <3025613752@qq.com>  Sun, 12 Jan 2025 22:37:01 +0800
+ -- gfdgd_xi <3025613752@qq.com>  Sun, 29 Jun 2025 11:36:50 +0800
 
 gxde-lang-selector (1.0.1) unstable; urgency=medium
 
