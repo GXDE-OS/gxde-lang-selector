@@ -13,13 +13,13 @@
   },
   {
     "name": "Chinese (Taiwan)",
-    "local_name": "正體中文",
+    "local_name": "繁體中文（中國臺灣）",
     "locale": "zh_TW",
     "timezone": "Asia/Shanghai"
   },
   {
     "name": "Chinese (Hong Kong)",
-    "local_name": "繁體中文（香港）",
+    "local_name": "繁體中文（中國香港）",
     "locale": "zh_HK",
     "timezone": "Asia/Shanghai"
   },
