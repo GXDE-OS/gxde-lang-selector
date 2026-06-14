@@ -20,7 +20,7 @@
 #include <QApplication>
 #include <QComboBox>
 #include <QDebug>
-#include <QDesktopWidget>
+// #include <QDesktopWidget>
 #include <QLayout>
 #include <QLayoutItem>
 #include <QMenu>

@@ -47,20 +47,18 @@ else()
 endif()
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Gui REQUIRED)
-find_package(Qt5Network REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5X11Extras REQUIRED)
-find_package(Qt5Xml REQUIRED)
-find_package(Qt5LinguistTools)
+find_package(Qt6Core REQUIRED)
+find_package(Qt6Gui REQUIRED)
+find_package(Qt6Network REQUIRED)
+find_package(Qt6Widgets REQUIRED)
+find_package(Qt6Xml REQUIRED)
+find_package(Qt6LinguistTools)
 
 set(Qt_LIBS
-    Qt5::Gui
-    Qt5::Network
-    Qt5::Widgets
-    Qt5::X11Extras
-    Qt5::Xml
+    Qt6::Gui
+    Qt6::Network
+    Qt6::Widgets
+    Qt6::Xml
     )
 
 set(SRC_FILES
@@ -102,7 +100,7 @@ file(GLOB INSTALLER_TRANSLATION_TS
      ${CMAKE_CURRENT_SOURCE_DIR}/i18n/installer-*.ts)
 set_source_files_properties(${INSTALLER_TRANSLATION_TS}
                             PROPERTIES OUTPUT_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/i18n)
-qt5_add_translation(INSTALLER_TRANSLATION_QM ${INSTALLER_TRANSLATION_TS})
+qt6_add_translation(INSTALLER_TRANSLATION_QM ${INSTALLER_TRANSLATION_TS})
 add_custom_target(installer-qm-update DEPENDS ${INSTALLER_TRANSLATION_QM})
 
 add_executable(gxde-lang-selector ${SRC_FILES})

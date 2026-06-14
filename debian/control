@@ -7,12 +7,8 @@ Build-Depends:
     debhelper (>=9),
     g++,
     pkg-config,
-    qt5-qmake,
-    qtbase5-dev,
-    qttools5-dev-tools,
-    libqt5x11extras5-dev,
-    qtchooser,
-    qttools5-dev,
+    qt6-base-dev,
+    qt6-tools-dev,
 Standards-Version: 3.9.6
 Homepage: http://www.deepin.org
 

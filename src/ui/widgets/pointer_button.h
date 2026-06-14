@@ -32,7 +32,7 @@ class PointerButton : public QPushButton {
 
  protected:
   // Override these two event handlers to implements hover effect.
-  void enterEvent(QEvent* event) override;
+  void enterEvent(QEnterEvent* event) override;
   void leaveEvent(QEvent* event) override;
 };
 

@@ -28,7 +28,7 @@ PointerButton::PointerButton(const QString& text, QWidget* parent)
   this->setText(text);
 }
 
-void PointerButton::enterEvent(QEvent* event) {
+void PointerButton::enterEvent(QEnterEvent* event) {
   this->setCursor(Qt::PointingHandCursor);
   QPushButton::enterEvent(event);
 }

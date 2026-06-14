@@ -20,7 +20,7 @@
 #include <sys/stat.h>
 #include <QDebug>
 #include <QDirIterator>
-#include <QTextCodec>
+// #include <QTextCodec>
 
 namespace installer {
 
@@ -69,14 +69,17 @@ bool CopyFolder(const QString src_dir, const QString& dest_dir,
 
   // Walk through source folder.
   while (ok && iter.hasNext()) {
-    src_info = iter.next();
-    dest_filepath = iter.filePath().replace(src_dir, dest_dir);
+    // src_info = iter.next();
+    QString nextPath = iter.next();              
+    QFileInfo src_info(nextPath);  
+    // dest_filepath = iter.filePath().replace(src_dir, dest_dir);
+    dest_filepath = QString(nextPath).replace(src_dir, dest_dir);
     if (src_info.isDir()) {
       if (!QDir(dest_filepath).exists()) {
         ok = CreateDirs(dest_filepath);
       }
       if (ok) {
-        ok = CopyMode(iter.filePath().toStdString().c_str(),
+        ok = CopyMode(nextPath.toStdString().c_str(),
                       dest_filepath.toStdString().c_str());
       }
     } else if (src_info.isFile()) {
@@ -84,9 +87,9 @@ bool CopyFolder(const QString src_dir, const QString& dest_dir,
         // Remove old file first.
         QFile::remove(dest_filepath);
       }
-      ok = QFile::copy(iter.filePath(), dest_filepath);
+      ok = QFile::copy(nextPath, dest_filepath);
       if (ok) {
-        ok = CopyMode(iter.filePath().toStdString().c_str(),
+        ok = CopyMode(nextPath.toStdString().c_str(),
                       dest_filepath.toStdString().c_str());
       }
     } else if (src_info.isSymLink()) {
@@ -184,9 +187,11 @@ QString ReadGBKFile(const QString& path) {
       return "";
     }
     const QByteArray file_data = file.readAll();
-    QTextCodec* codec = QTextCodec::codecForName("GB18030");
+    // QTextCodec* codec = QTextCodec::codecForName("GB18030");
     file.close();
-    return codec->toUnicode(file_data);
+    auto decoder = QStringDecoder("GB18030"); 
+    return decoder.decode(file_data);
+    // return codec->toUnicode(file_data); 
   } else {
     qWarning() << "ReadGBKFile() file not found:" << path;
     return "";
