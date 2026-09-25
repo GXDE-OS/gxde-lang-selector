@@ -1,3 +1,9 @@
+gxde-lang-selector (2.0.1) UNRELEASED; urgency=medium
+
+  * 改为独立服务，在显示管理器前启动，去除对LightDM的依赖
+
+ -- CharOfString <root@charofstring.cc>  Fri, 25 Sep 2026 04:20:11 -0500
+
 gxde-lang-selector (2.0.0) UNRELEASED; urgency=medium
 
   * 修复上方选择其它语言，下方按钮依旧显示 Next 的问题
