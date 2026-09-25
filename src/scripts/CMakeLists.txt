@@ -8,10 +8,20 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/session.wrapper
         WORLD_READ WORLD_EXECUTE
         )
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/1050-gxde-lang-selector
-        DESTINATION /lib/live/config
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/gxde-lang-selector-launcher.in
+               ${CMAKE_CURRENT_BINARY_DIR}/gxde-lang-selector-launcher
+               @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/gxde-lang-selector-launcher
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/gxde-lang-selector/
         PERMISSIONS
         OWNER_READ OWNER_EXECUTE OWNER_WRITE
         GROUP_READ GROUP_EXECUTE
         WORLD_READ WORLD_EXECUTE
+        )
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/gxde-lang-selector.service.in
+               ${CMAKE_CURRENT_BINARY_DIR}/gxde-lang-selector.service
+               @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/gxde-lang-selector.service
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/systemd/system
         )

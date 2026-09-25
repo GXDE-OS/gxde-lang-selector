@@ -4,3 +4,8 @@
 
 %:
 	dh $@  --parallel
+
+# Enable the unit so it runs on live boots, but never start it on install.
+override_dh_installinit:
+	dh_installinit
+	dh_installsystemd --no-start

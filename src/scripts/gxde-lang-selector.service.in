@@ -1,0 +1,20 @@
+[Unit]
+Description=GXDE live system language selector
+# Only on live systems; live-media=/bootfrom= boots skip the selector.
+ConditionKernelCommandLine=boot=live
+ConditionKernelCommandLine=!live-media
+ConditionKernelCommandLine=!bootfrom
+After=live-config.service systemd-user-sessions.service systemd-logind.service plymouth-quit.service
+# The chosen locale must be written before any display manager starts.
+Before=display-manager.service gxdm.service lightdm.service
+
+[Service]
+Type=oneshot
+ExecStart=@CMAKE_INSTALL_PREFIX@/lib/gxde-lang-selector/gxde-lang-selector-launcher
+# Wait for the user as long as it takes.
+TimeoutStartSec=infinity
+RuntimeDirectory=gxde-lang-selector
+Environment=HOME=/root XDG_RUNTIME_DIR=/run/gxde-lang-selector
+
+[Install]
+WantedBy=graphical.target

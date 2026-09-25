@@ -1,0 +1,34 @@
+#!/bin/sh
+# Run gxde-lang-selector on a private X server before the display manager
+# starts, so the chosen locale is in place for the greeter and the user
+# session regardless of which display manager (gxdm, lightdm, ...) is used.
+
+SELECTOR=@CMAKE_INSTALL_PREFIX@/bin/gxde-lang-selector
+XSERVER=/usr/bin/X
+VT="${GXDE_LANG_SELECTOR_VT:-7}"
+
+DISPLAY_FILE="$(mktemp)" || exit 1
+trap 'rm -f "$DISPLAY_FILE"' EXIT
+
+# -displayfd picks a free display and writes its number once the server
+# is ready to accept connections.
+"$XSERVER" -displayfd 3 -nolisten tcp -noreset "vt$VT" 3>"$DISPLAY_FILE" &
+XPID=$!
+
+i=0
+while [ ! -s "$DISPLAY_FILE" ]; do
+	if ! kill -0 "$XPID" 2>/dev/null || [ "$i" -ge 300 ]; then
+		echo "gxde-lang-selector: X server failed to start" >&2
+		kill "$XPID" 2>/dev/null
+		exit 1
+	fi
+	sleep 0.1
+	i=$((i + 1))
+done
+
+DISPLAY=":$(head -n 1 "$DISPLAY_FILE")" QT_QPA_PLATFORM=xcb "$SELECTOR"
+STATUS=$?
+
+kill "$XPID" 2>/dev/null
+wait "$XPID"
+exit "$STATUS"

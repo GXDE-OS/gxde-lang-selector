@@ -17,5 +17,6 @@ Architecture: any
 Depends:
     ${shlibs:Depends},
     ${misc:Depends},
+    xserver-xorg-core,
 Description: Language selection page
  Language selection page
